@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Sonidos Avanzado con Web Audio API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Generador de Sonidos Avanzado con Web Audio API</h1>
+    <canvas id="waveformCanvas" width="800" height="200"></canvas>
+    <div class="controls">
+      <label for="oscillatorType">Tipo de Oscilador:</label>
+      <select id="oscillatorType">
+        <option value="sine">Senoidal</option>
+        <option value="square">Cuadrada</option>
+        <option value="triangle">Triangular</option>
+        <option value="sawtooth">Diente de Sierra</option>
+				<option value="custom">Personalizada</option>
+				<option value="custom2">Personalizada2</option>
+				<option value="custom3">Personalizada3</option>
+				<option value="custom4">Personalizada4</option>
+
+      </select>
+
+      <label for="filterType">Tipo de Filtro:</label>
+      <select id="filterType">
+        <option value="lowpass">Paso Bajo</option>
+        <option value="highpass">Paso Alto</option>
+        <option value="bandpass">Paso de Banda</option>
+      </select>
+      <label for="filterFrequency">Frecuencia del Filtro (Hz):</label>
+      <input type="number" id="filterFrequency" value="1000" min="20" max="20000">
+
+      <label for="frequency">Frecuencia (Hz):</label>
+      <input type="number" id="frequency" value="440" min="20" max="2000">
+
+      <label for="duration">Duración (segundos):</label>
+      <input type="number" id="duration" value="2" min="1" max="10">
+
+      <label for="volume">Volumen:</label>
+      <input type="range" id="volume" value="0.5" min="0" max="1" step="0.01">
+
+			<label for="customReal">Coeficientes Reales:</label>
+			<input type="text" id="customReal" value="0,0.5,0,0.25,0">
+
+			<label for="customImag">Coeficientes Imaginarios:</label>
+			<input type="text" id="customImag" value="0,0,0.5,0,0.25">
+
+      <label for="reverb">Reverberación:</label>
+      <input type="number" id="reverb" value="0" min="0" max="1" step="0.01">
+
+      <label for="distortion">Distorsión:</label>
+      <input type="number" id="distortion" value="0" min="0" max="100" step="1">
+
+      <label for="attack">Ataque (ms):</label>
+      <input type="number" id="attack" value="10" min="0" max="1000">
+
+      <label for="decay">Decay (ms):</label>
+      <input type="number" id="decay" value="200" min="0" max="1000">
+
+      <label for="sustain">Sustain (%):</label>
+      <input type="number" id="sustain" value="0.5" min="0" max="1" step="0.01">
+
+      <label for="release">Release (ms):</label>
+      <input type="number" id="release" value="300" min="0" max="1000">
+
+      <label for="loop">Repetir (Loop):</label>
+      <input type="checkbox" id="loop">
+
+      <label for="reverse">Invertir:</label>
+      <input type="checkbox" id="reverse">
+
+      <label for="noiseIntensity">Intensidad del Ruido:</label>
+      <input type="number" id="noiseIntensity" value="0.5" min="0" max="1" step="0.01">
+
+      <label for="pitchShift">Cambio de Tono (Pitch Shift):</label>
+      <input type="number" id="pitchShift" value="0" min="-1200" max="1200">
+
+      <label for="delayTime">Tiempo de Retardo (Delay):</label>
+      <input type="number" id="delayTime" value="0" min="0" max="1" step="0.01">
+
+      <label for="laserFrequency">Frecuencia Base del Láser (Hz):</label>
+      <input type="number" id="laserFrequency" value="3000" min="500" max="10000">
+
+      <label for="pitchSweep">Cambio de Tono (Pitch Sweep):</label>
+      <input type="number" id="pitchSweep" value="-2000" min="-5000" max="5000">
+
+      <label for="amplitudeModulation">Modulación de Amplitud:</label>
+      <input type="number" id="amplitudeModulation" value="5" min="0" max="20">
+
+      <label for="sharpness">Agudeza:</label>
+      <input type="number" id="sharpness" value="5000" min="20" max="20000">
+
+      <button id="playSound">Reproducir Sonido</button>
+      <button id="generateNoise">Generar Ruido Blanco</button>
+      <button id="generateExplosion">Generar Explosión</button>
+      <button id="generateGunshot">Generar Disparo</button>
+      <button id="generateLaser">Generar Rayo Láser</button>
+      <button id="stopAll">Detener Todo</button>
+      <button id="resetDefaults">Restablecer Parámetros</button>
+    </div>
+    
+    <div class="explanation">
+      <p>Esta aplicación utiliza la <code>Web Audio API</code> para generar sonidos personalizados y visualizarlos en tiempo real.</p>
+      <p>Puedes ajustar varios parámetros como el tipo de oscilador, frecuencia, duración, volumen, reverberación, distorsión y envolvente ADSR.</p>
+      <p>El gráfico muestra la forma de onda del sonido actual en tiempo real.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
